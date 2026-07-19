@@ -254,6 +254,12 @@ function getLanguageName(code: string) {
   );
 }
 
+function ccbHomepageLabel(language: string | null) {
+  if (language === "zh_CN") return "前往 Cataclysm: Cleanwater Bomb 官方主页";
+  if (language === "zh_TW") return "前往 Cataclysm: Cleanwater Bomb 官方網站";
+  return t("Visit the Cataclysm: Cleanwater Bomb official website");
+}
+
 type Attribution = { text: string; issueLinkText: string };
 
 const englishAttribution: Attribution = {
@@ -684,21 +690,10 @@ Anyway?`,
       </InterpolatedTranslation>
     </p>
 
-    {#if locale}
-      <p style="font-weight: bold">
-        <InterpolatedTranslation
-          str={t(
-            `You can help translate the Guide into your language on {link_transifex}.`,
-            { link_transifex: "{link_transifex}" },
-          )}
-          slot0="link_transifex">
-          <a
-            slot="0"
-            href="https://www.transifex.com/nornagon/the-hitchhikers-guide-to-the-cataclysm/"
-            >Transifex</a>
-        </InterpolatedTranslation>
-      </p>
-    {/if}
+    <p style="font-weight: bold">
+      <a href="https://crimsoncrossbunker.github.io/"
+        >{ccbHomepageLabel(locale)} ↗</a>
+    </p>
 
     <h2>{t("Catalogs")}</h2>
     <ul>
