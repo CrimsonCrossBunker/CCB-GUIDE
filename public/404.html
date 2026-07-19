@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Redirecting to Cataclysm: Cleanwater Bomb Guide</title>
+    <script>
+      const base = "/CCB-GUIDE/";
+      const path = location.pathname.startsWith(base)
+        ? location.pathname.slice(base.length)
+        : "";
+      location.replace(base + location.search + "#/" + path);
+    </script>
+  </head>
+  <body>
+    <p>Redirecting to the guide…</p>
+  </body>
+</html>

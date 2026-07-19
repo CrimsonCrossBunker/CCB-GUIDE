@@ -9,7 +9,7 @@ tx.init({
   token: "1/1d8c1f9e14b4c21d70dd3f6fccdd0ab16b691105",
 });
 
-if (location.hostname !== "localhost")
+if (location.hostname !== "localhost" && process.env.SENTRY_DSN)
   Sentry.init({
     dsn: process.env.SENTRY_DSN,
     integrations: [new Sentry.BrowserTracing()],

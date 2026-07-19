@@ -40,7 +40,9 @@ let builds:
     }[]
   | null = null;
 
-fetch("https://raw.githubusercontent.com/nornagon/cdda-data/main/builds.json")
+fetch(
+  "https://raw.githubusercontent.com/CrimsonCrossBunker/CCB-GUIDE-DATA/main/builds.json",
+)
   .then((d) => d.json())
   .then((b) => {
     builds = b;
@@ -57,39 +59,39 @@ data.setVersion(version, locale);
 const tilesets = [
   {
     name: "AltiCa",
-    url: "https://raw.githubusercontent.com/CleverRaven/Cataclysm-DDA/{version}/gfx/Altica",
+    url: "https://raw.githubusercontent.com/CrimsonCrossBunker/Cataclysm-Cleanwater-Bomb/{version}/gfx/Altica",
   },
   {
     name: "BrownLikeBears",
-    url: "https://raw.githubusercontent.com/CleverRaven/Cataclysm-DDA/{version}/gfx/BrownLikeBears",
+    url: "https://raw.githubusercontent.com/CrimsonCrossBunker/Cataclysm-Cleanwater-Bomb/{version}/gfx/BrownLikeBears",
   },
   {
     name: "Chibi_Ultica",
-    url: "https://raw.githubusercontent.com/CleverRaven/Cataclysm-DDA/{version}/gfx/ChibiUltica",
+    url: "https://raw.githubusercontent.com/CrimsonCrossBunker/Cataclysm-Cleanwater-Bomb/{version}/gfx/ChibiUltica",
   },
   {
     name: "Cuteclysm(Alpha)",
-    url: "https://raw.githubusercontent.com/CleverRaven/Cataclysm-DDA/{version}/gfx/Cuteclysm",
+    url: "https://raw.githubusercontent.com/CrimsonCrossBunker/Cataclysm-Cleanwater-Bomb/{version}/gfx/Cuteclysm",
   },
   {
     name: "Hollow Moon",
-    url: "https://raw.githubusercontent.com/CleverRaven/Cataclysm-DDA/{version}/gfx/HollowMoon",
+    url: "https://raw.githubusercontent.com/CrimsonCrossBunker/Cataclysm-Cleanwater-Bomb/{version}/gfx/HollowMoon",
   },
   {
     name: "MSXotto+",
-    url: "https://raw.githubusercontent.com/CleverRaven/Cataclysm-DDA/{version}/gfx/MshockXotto%2B",
+    url: "https://raw.githubusercontent.com/CrimsonCrossBunker/Cataclysm-Cleanwater-Bomb/{version}/gfx/MshockXotto%2B",
   },
   {
     name: "NeoDays",
-    url: "https://raw.githubusercontent.com/CleverRaven/Cataclysm-DDA/{version}/gfx/NeoDaysTileset",
+    url: "https://raw.githubusercontent.com/CrimsonCrossBunker/Cataclysm-Cleanwater-Bomb/{version}/gfx/NeoDaysTileset",
   },
   {
     name: "RetroDays",
-    url: "https://raw.githubusercontent.com/CleverRaven/Cataclysm-DDA/{version}/gfx/RetroDaysTileset",
+    url: "https://raw.githubusercontent.com/CrimsonCrossBunker/Cataclysm-Cleanwater-Bomb/{version}/gfx/RetroDaysTileset",
   },
   {
     name: "UltiCa",
-    url: "https://raw.githubusercontent.com/CleverRaven/Cataclysm-DDA/{version}/gfx/UltimateCataclysm",
+    url: "https://raw.githubusercontent.com/CrimsonCrossBunker/Cataclysm-Cleanwater-Bomb/{version}/gfx/UltimateCataclysm",
   },
 ];
 
@@ -145,13 +147,11 @@ function load() {
 
 $: if (item && item.id && $data && $data.byIdMaybe(item.type as any, item.id)) {
   const it = $data.byId(item.type as any, item.id);
-  document.title = `${singularName(
-    it,
-  )} - The Hitchhiker's Guide to the Cataclysm`;
+  document.title = `${singularName(it)} - Cataclysm: Cleanwater Bomb Guide`;
 } else if (item && !item.id && item.type) {
-  document.title = `${item.type} - The Hitchhiker's Guide to the Cataclysm`;
+  document.title = `${item.type} - Cataclysm: Cleanwater Bomb Guide`;
 } else {
-  document.title = "The Hitchhiker's Guide to the Cataclysm";
+  document.title = "Cataclysm: Cleanwater Bomb Guide";
 }
 
 load();
@@ -330,8 +330,8 @@ function langHref(lang: string, href: string) {
         <a
           href={import.meta.env.BASE_URL + location.search}
           on:click={() => (search = "")}
-          ><span class="wide">Hitchhiker's Guide to the Cataclysm</span><span
-            class="narrow">HHG</span
+          ><span class="wide">Cataclysm: Cleanwater Bomb Guide</span><span
+            class="narrow">CCB Guide</span
           ></a>
       </strong>
     </div>
@@ -415,9 +415,11 @@ files in the game itself.`,
         slot2="link_flashlight"
         slot3="link_table"
         slot4="link_zombie">
-        <strong slot="0">Hitchhiker's Guide to the Cataclysm</strong>
-        <a slot="1" href="https://cataclysmdda.org/"
-          >Cataclysm: Dark Days Ahead</a>
+        <strong slot="0">Cataclysm: Cleanwater Bomb Guide</strong>
+        <a
+          slot="1"
+          href="https://github.com/CrimsonCrossBunker/Cataclysm-Cleanwater-Bomb"
+          >Cataclysm: Cleanwater Bomb</a>
         <a
           slot="2"
           href="{import.meta.env.BASE_URL}item/flashlight{location.search}"
@@ -474,7 +476,7 @@ Anyway?`,
     <p>
       <InterpolatedTranslation
         str={t(
-          `The Guide is developed on {link_github} by {link_nornagon}. If you notice any problems, please {link_file_an_issue}!`,
+          `This Cleanwater Bomb edition is maintained on {link_github} by {link_nornagon}. It is derived from the original guide by nornagon and its contributors. If you notice any problems, please {link_file_an_issue}!`,
           {
             link_github: "{link_github}",
             link_nornagon: "{link_nornagon}",
@@ -484,9 +486,13 @@ Anyway?`,
         slot0="link_github"
         slot1="link_nornagon"
         slot2="link_file_an_issue">
-        <a slot="0" href="https://github.com/nornagon/cdda-guide">GitHub</a>
-        <a slot="1" href="https://www.nornagon.net">nornagon</a>
-        <a slot="2" href="https://github.com/nornagon/cdda-guide/issues"
+        <a slot="0" href="https://github.com/CrimsonCrossBunker/CCB-GUIDE"
+          >GitHub</a>
+        <a slot="1" href="https://github.com/CrimsonCrossBunker"
+          >CrimsonCrossBunker</a>
+        <a
+          slot="2"
+          href="https://github.com/CrimsonCrossBunker/CCB-GUIDE/issues"
           >{t("file an issue")}</a>
       </InterpolatedTranslation>
     </p>
@@ -509,20 +515,53 @@ Anyway?`,
 
     <h2>{t("Catalogs")}</h2>
     <ul>
-      <li><a href="/item{location.search}">{t("Items")}</a></li>
-      <li><a href="/monster{location.search}">{t("Monsters")}</a></li>
-      <li><a href="/furniture{location.search}">{t("Furniture")}</a></li>
-      <li><a href="/terrain{location.search}">{t("Terrain")}</a></li>
-      <li><a href="/vehicle_part{location.search}">{t("Vehicle Parts")}</a></li>
-      <li><a href="/tool_quality{location.search}">{t("Qualities")}</a></li>
-      <li><a href="/mutation{location.search}">{t("Mutations")}</a></li>
-      <li><a href="/martial_art{location.search}">{t("Martial Arts")}</a></li>
-      <li><a href="/json_flag{location.search}">{t("Flags")}</a></li>
       <li>
-        <a href="/achievement{location.search}">{t("Achievements")}</a> /
-        <a href="/conduct{location.search}">{t("Conducts")}</a>
+        <a href="{import.meta.env.BASE_URL}item{location.search}"
+          >{t("Items")}</a>
       </li>
-      <li><a href="/proficiency{location.search}">{t("Proficiencies")}</a></li>
+      <li>
+        <a href="{import.meta.env.BASE_URL}monster{location.search}"
+          >{t("Monsters")}</a>
+      </li>
+      <li>
+        <a href="{import.meta.env.BASE_URL}furniture{location.search}"
+          >{t("Furniture")}</a>
+      </li>
+      <li>
+        <a href="{import.meta.env.BASE_URL}terrain{location.search}"
+          >{t("Terrain")}</a>
+      </li>
+      <li>
+        <a href="{import.meta.env.BASE_URL}vehicle_part{location.search}"
+          >{t("Vehicle Parts")}</a>
+      </li>
+      <li>
+        <a href="{import.meta.env.BASE_URL}tool_quality{location.search}"
+          >{t("Qualities")}</a>
+      </li>
+      <li>
+        <a href="{import.meta.env.BASE_URL}mutation{location.search}"
+          >{t("Mutations")}</a>
+      </li>
+      <li>
+        <a href="{import.meta.env.BASE_URL}martial_art{location.search}"
+          >{t("Martial Arts")}</a>
+      </li>
+      <li>
+        <a href="{import.meta.env.BASE_URL}json_flag{location.search}"
+          >{t("Flags")}</a>
+      </li>
+      <li>
+        <a href="{import.meta.env.BASE_URL}achievement{location.search}"
+          >{t("Achievements")}</a>
+        /
+        <a href="{import.meta.env.BASE_URL}conduct{location.search}"
+          >{t("Conducts")}</a>
+      </li>
+      <li>
+        <a href="{import.meta.env.BASE_URL}proficiency{location.search}"
+          >{t("Proficiencies")}</a>
+      </li>
     </ul>
 
     <InterpolatedTranslation

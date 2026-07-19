@@ -1,30 +1,39 @@
-# The Hitchhiker's Guide to the Cataclysm
+# Cataclysm: Cleanwater Bomb Guide
 
-<img src="src/assets/dont_panic.png" width=300 align="right" />
+This is the searchable web guide for
+[Cataclysm: Cleanwater Bomb](https://github.com/CrimsonCrossBunker/Cataclysm-Cleanwater-Bomb).
+It is published at
+[crimsoncrossbunker.github.io/CCB-GUIDE](https://crimsoncrossbunker.github.io/CCB-GUIDE/).
 
-The Hitchhiker's Guide to the Cataclysm is a guide to the zombie survival roguelike game [Cataclysm: Dark Days Ahead](https://cataclysmdda.org/). You can search for things in the game, like items, or monsters, and find useful information about them. The data in the Guide comes directly from the JSON files in the game itself.
+The guide is a static Svelte/Vite progressive web app. Game JSON and game
+translations are generated from Cleanwater Bomb releases in the separate
+[CCB-GUIDE-DATA](https://github.com/CrimsonCrossBunker/CCB-GUIDE-DATA)
+repository. Both repositories update and deploy through GitHub Actions.
 
-The Guide stores all its data locally and is offline-capable, so you can take it with you wherever you go. There's nothing to do to make the Guide work offline, just visit the page and it will work even without internet access, as long as you've visited it once before. It's also installable, so you can pop it out of your browser and use it like a regular app.
+## Development
 
-_More popular than the Celestial Home Care Omnibus, better selling than Fifty-three More Things to do in Zero Gravity, and more controversial than Oolon Colluphid's trilogy of philosophical blockbusters Where God Went Wrong, Some More of God's Greatest Mistakes and Who is this God Person Anyway?_
+```sh
+yarn install --frozen-lockfile
+yarn dev
+```
 
-[📕 **Open the Guide**](https://cdda-guide.nornagon.net)
+Run validation and create a production build with:
 
-## Acknowledgements
+```sh
+yarn validate
+yarn build
+```
 
-The Hitchhiker's Guide to the Cataclysm is maintained by [**@nornagon**](https://github.com/nornagon), with generous contributions from the following folks:
+The production site is hosted below the `/CCB-GUIDE/` GitHub Pages base path.
 
-- [**@hexagonrecursion**](https://github.com/hexagonrecursion)
-- [**@CalKerethi**](https://github.com/CalKerethi)
-- [**@hfox**](https://github.com/hfox)
-- [**@pizzasgood**](https://github.com/pizzasgood)
-- [**@GuardianDll**](https://github.com/GuardianDll)
-- [**@Hyperseeker**](https://github.com/Hyperseeker)
+## Attribution and license
 
-Further, thanks to everyone who files bugs and feature requests in the issue tracker. You all help make the Guide what it is!
+This project is a modified edition of
+[nornagon/cdda-guide](https://github.com/nornagon/cdda-guide), originally
+created and maintained by [nornagon](https://github.com/nornagon), with
+contributions from the upstream community. The full upstream and data
+attribution is recorded in [ATTRIBUTION.md](ATTRIBUTION.md).
 
-## Translation
-
-The Guide is available in every language that Cataclysm supports. The game data will be presented using the translations from the game itself, but the Guide's UI is not yet translated into every language. You can help! Translations are [crowdsourced on Transifex](https://www.transifex.com/nornagon/the-hitchhikers-guide-to-the-cataclysm/). If you do: thanks so much for your help! 感謝! Gracias! Merci! Obrigado! Danke! 谢谢! 감사해요! Благодарность! ευχαριστώ! Terima kasih! !شكرًا Takk! Dziękuję! Спасибі! 🙇‍♂️
-
-[:globe_with_meridians: **Help translate the Guide!**](https://www.transifex.com/nornagon/the-hitchhikers-guide-to-the-cataclysm/)
+The guide source remains licensed under
+[GNU GPL version 3 only](LICENSE). Modified source is made available in this
+public repository as required by that license.

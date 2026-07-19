@@ -1,9 +1,10 @@
 {
-  "name": "svelte-app",
+  "name": "ccb-guide",
   "version": "1.0.0",
   "private": true,
   "type": "module",
   "license": "GPL-3.0-only",
+  "repository": "https://github.com/CrimsonCrossBunker/CCB-GUIDE",
   "packageManager": "yarn@1.22.22",
   "scripts": {
     "dev": "vite",

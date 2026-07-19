@@ -191,8 +191,9 @@ function groupByAppearance(results: SearchResult[]): OvermapSpecial[][] {
             <OvermapAppearance overmapSpecial={result[0]} />
           </td>
           <td style="vertical-align: middle; padding-left: 5px;">
-            <a href="/overmap_special/{result[0].id}{location.search}"
-              >{omsName(data, result[0])}</a
+            <a
+              href="{import.meta.env.BASE_URL}overmap_special/{result[0]
+                .id}{location.search}">{omsName(data, result[0])}</a
             >{#if result.length > 1}{" "}({result.length} variants){/if}
           </td>
         </tr>

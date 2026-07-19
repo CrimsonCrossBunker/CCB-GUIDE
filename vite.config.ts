@@ -6,7 +6,7 @@ import EnvironmentPlugin from "vite-plugin-environment";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: "/",
+  base: "/CCB-GUIDE/",
   build: {
     sourcemap: true,
   },
@@ -27,7 +27,7 @@ export default defineConfig({
       includeAssets: ["favicon.png"],
       manifest: {
         short_name: "Cataclysm Guide",
-        name: "The Hitchhiker's Guide to the Cataclysm",
+        name: "Cataclysm: Cleanwater Bomb Guide",
         icons: [
           {
             src: "icon-192.png",

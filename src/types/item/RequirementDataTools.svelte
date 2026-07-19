@@ -51,7 +51,8 @@ let { tools, qualities } =
             {#if count <= 0}
               {#if data.craftingPseudoItem(toolId)}
                 <a
-                  href="/furniture/{data.craftingPseudoItem(
+                  href="{import.meta.env
+                    .BASE_URL}furniture/{data.craftingPseudoItem(
                     toolId,
                   )}{location.search}"
                   >{singularName(data.byId("item", toolId))}</a>
