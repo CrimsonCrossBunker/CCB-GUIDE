@@ -673,8 +673,10 @@ Anyway?`,
         slot2="link_file_an_issue">
         <a slot="0" href="https://github.com/CrimsonCrossBunker/CCB-GUIDE"
           >GitHub</a>
-        <a slot="1" href="https://github.com/CrimsonCrossBunker"
-          >CrimsonCrossBunker</a>
+        <span slot="1"
+          ><a href="https://github.com/CrimsonCrossBunker"
+            >CrimsonCrossBunker</a>
+          · <a href="https://github.com/LYHGLYTX">LYHGLYTX</a></span>
         <a
           slot="2"
           href="https://github.com/CrimsonCrossBunker/CCB-GUIDE/issues"
