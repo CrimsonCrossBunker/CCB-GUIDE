@@ -1,5 +1,5 @@
 import { writable } from "svelte/store";
-import makeI18n, { type Gettext } from "gettext.js";
+import makeI18n, { type Gettext, type JsonData } from "gettext.js";
 
 import {
   type Translation,
@@ -137,6 +137,36 @@ export const pluralName = (
 
 export const byName = (a: any, b: any) =>
   singularName(a).localeCompare(singularName(b));
+
+// CCB data format v1 collapsed one-form plural msgstr arrays to strings.
+// gettext.js only considers array values when resolving ngettext lookups.
+export function normalizePluralCatalogEntries(
+  catalog: JsonData,
+  cddaData: CddaData,
+): JsonData {
+  const normalized = { ...catalog };
+  const pluralMessageIds = new Set<string>();
+
+  for (const rawObject of cddaData.all()) {
+    const object = rawObject as any;
+    if (!needsPlural.includes(object?.type)) continue;
+
+    const name = object?.name?.male ?? object?.name;
+    if (name == null) continue;
+    for (const translation of Array.isArray(name) ? name : [name]) {
+      pluralMessageIds.add(getMsgId(translation));
+    }
+  }
+
+  for (const messageId of pluralMessageIds) {
+    const translation = normalized[messageId];
+    if (typeof translation === "string") {
+      normalized[messageId] = [translation];
+    }
+  }
+
+  return normalized;
+}
 
 function isStringArray<T>(array: string[] | T[]): array is string[] {
   return typeof array[0] === "string";
@@ -2074,19 +2104,22 @@ export const data = {
           ),
         ),
     ]);
-    if (locale && localeJson) {
-      if (pinyinNameJson) pinyinNameJson[""] = localeJson[""];
-      i18n.loadJSON(localeJson);
-      i18n.setLocale(locale);
-      if (pinyinNameJson) {
-        i18n.loadJSON(pinyinNameJson, "pinyin");
-      }
-    }
     const cddaData = new CddaData(
       dataJson.data,
       dataJson.build_number,
       dataJson.release,
     );
+    if (locale && localeJson) {
+      if (pinyinNameJson) pinyinNameJson[""] = localeJson[""];
+      i18n.loadJSON(normalizePluralCatalogEntries(localeJson, cddaData));
+      i18n.setLocale(locale);
+      if (pinyinNameJson) {
+        i18n.loadJSON(
+          normalizePluralCatalogEntries(pinyinNameJson, cddaData),
+          "pinyin",
+        );
+      }
+    }
     set(cddaData);
   },
 };
