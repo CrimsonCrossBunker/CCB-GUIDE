@@ -560,6 +560,7 @@ export type UseFunction =
         | "musical_instrument"
         | "place_monster"
         | "place_trap"
+        | "paint_vehicle"
         | "play_instrument"
         | "reveal_map"
         | "unpack"
