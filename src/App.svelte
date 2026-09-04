@@ -260,6 +260,18 @@ function ccbHomepageLabel(language: string | null) {
   return t("Visit the Cataclysm: Cleanwater Bomb official website");
 }
 
+function ccbDocsLabel(language: string | null) {
+  if (language === "zh_CN") return "Lua MOD 文档";
+  if (language === "zh_TW") return "Lua MOD 文件";
+  return "Lua MOD documentation";
+}
+
+function ccbModCatalogLabel(language: string | null) {
+  if (language === "zh_CN") return "CCB MOD 目录";
+  if (language === "zh_TW") return "CCB MOD 目錄";
+  return "CCB MOD catalog";
+}
+
 type Attribution = { text: string; issueLinkText: string };
 
 const englishAttribution: Attribution = {
@@ -693,6 +705,15 @@ Anyway?`,
     <p style="font-weight: bold">
       <a href="https://crimsoncrossbunker.github.io/"
         >{ccbHomepageLabel(locale)} ↗</a>
+      ·
+      <a
+        href={locale === "zh_CN" || locale === "zh_TW"
+          ? "https://crimsoncrossbunker.github.io/CCB-Docs/api/lua/v1/overview/"
+          : "https://crimsoncrossbunker.github.io/CCB-Docs/en/api/lua/v1/overview/"}
+        >{ccbDocsLabel(locale)} ↗</a>
+      ·
+      <a href="https://crimsoncrossbunker.github.io/CCB-MOD/"
+        >{ccbModCatalogLabel(locale)} ↗</a>
     </p>
 
     <h2>{t("Catalogs")}</h2>
